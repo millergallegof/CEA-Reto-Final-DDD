@@ -6,7 +6,6 @@ public class CuentaId extends Identity {
     public CuentaId(String value) {
         super(value);
     }
-
     public CuentaId() {
     }
 }

@@ -1,26 +1,59 @@
 package co.com.sofka.capacitacionpersonas.estudiante.events;
 
-import co.com.sofka.capacitacionpersonas.estudiante.Cuenta;
-import co.com.sofka.capacitacionpersonas.estudiante.Matricula;
+import co.com.sofka.capacitacionpersonas.estudiante.values.*;
 import co.com.sofka.domain.generic.DomainEvent;
 
-// Evento de domino - cambiar de estados y para integrar con otro contexto
 public class EstudianteCreado extends DomainEvent {
-    private final Matricula matricula;
-    private final Cuenta cuenta;
+    private final MatriculaId matriculaId;
+    private final ValorMatricula valorMatricula;
+    private final TipoMatricula tipoMatricula;
+    private final CuentaId cuentaId;
+    private final TipoCuenta tipoCuenta;
+    private final DatosUsuario datosUsuario;
+    private final LibretaId libretaId;
+    private final Datos datos;
 
-    public EstudianteCreado(Matricula matricula, Cuenta cuenta) {
-//        super(type -> paquete donde se va a encaminar el evento de dominio entre paquetes
+    public EstudianteCreado(MatriculaId matriculaId, ValorMatricula valorMatricula, TipoMatricula tipoMatricula, CuentaId cuentaId, TipoCuenta tipoCuenta, DatosUsuario datosUsuario, LibretaId libretaId, Datos datos) {
         super("co.com.sofka.capacitacionpersonas.EstudianteCreado");
-        this.matricula = matricula;
-        this.cuenta = cuenta;
+        this.matriculaId = matriculaId;
+        this.valorMatricula = valorMatricula;
+        this.tipoMatricula = tipoMatricula;
+        this.cuentaId = cuentaId;
+        this.tipoCuenta = tipoCuenta;
+        this.datosUsuario = datosUsuario;
+        this.libretaId = libretaId;
+        this.datos = datos;
     }
 
-    public Matricula getMatricula() {
-        return matricula;
+    public MatriculaId getMatriculaId() {
+        return matriculaId;
     }
 
-    public Cuenta getCuenta() {
-        return cuenta;
+    public ValorMatricula getValorMatricula() {
+        return valorMatricula;
+    }
+
+    public TipoMatricula getTipoMatricula() {
+        return tipoMatricula;
+    }
+
+    public CuentaId getCuentaId() {
+        return cuentaId;
+    }
+
+    public TipoCuenta getTipoCuenta() {
+        return tipoCuenta;
+    }
+
+    public DatosUsuario getDatosUsuario() {
+        return datosUsuario;
+    }
+
+    public LibretaId getLibretaId() {
+        return libretaId;
+    }
+
+    public Datos getDatos() {
+        return datos;
     }
 }

@@ -1,9 +1,6 @@
 package co.com.sofka.capacitacionpersonas.estudiante;
 
-import co.com.sofka.capacitacionpersonas.estudiante.events.CategoriaLicenciaCambiada;
-import co.com.sofka.capacitacionpersonas.estudiante.events.DatosUsuActualizado;
-import co.com.sofka.capacitacionpersonas.estudiante.events.EstudianteCreado;
-import co.com.sofka.capacitacionpersonas.estudiante.events.MatriculaAgregada;
+import co.com.sofka.capacitacionpersonas.estudiante.events.*;
 import co.com.sofka.domain.generic.EventChange;
 
 public class EstudiantEventChange extends EventChange {
@@ -11,11 +8,17 @@ public class EstudiantEventChange extends EventChange {
 
 //        es como un constructor de agregados
         apply((EstudianteCreado event) -> {
-            estudiante.cuenta = event.getCuenta();
-            estudiante.matricula = event.getMatricula();
+            estudiante.matricula = new Matricula(event.getMatriculaId(), event.getValorMatricula(), event.getTipoMatricula());
+            estudiante.cuenta = new Cuenta(event.getCuentaId(), event.getDatosUsuario());
+            estudiante.libreta = new Libreta(event.getLibretaId(), event.getDatos());
+        });
+
+        apply((MatriculaCreada event) -> {
+            estudiante.matricula = new Matricula(event.getMatriculaId(), event.getValorMatricula(), event.getTipoMatricula());
         });
 
 //        cambia el estado del agregado
+//        agregar matricula
         apply((MatriculaAgregada event) -> {
             estudiante.matricula = event.getMatricula();
         });
