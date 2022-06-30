@@ -32,4 +32,8 @@ public class Salario implements ValueObject<Salario.Props> {
         ValorSalario valorSalario();
         String periocidad();
     }
+
+    public Salario modificarPeriocidad(String nuevaPeriocidad) {
+        return new Salario(this.valorSalario, nuevaPeriocidad);
+    }
 }

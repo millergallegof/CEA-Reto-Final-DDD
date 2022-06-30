@@ -17,4 +17,8 @@ public class Contrato extends Entity<ContratoId> {
         this.fechaContrato = fechaContrato;
         this.salario = salario;
     }
+
+    public void cambiarPeriocidad(String nuevaPeriocidad) {
+        this.salario = salario.modificarPeriocidad(nuevaPeriocidad);
+    }
 }

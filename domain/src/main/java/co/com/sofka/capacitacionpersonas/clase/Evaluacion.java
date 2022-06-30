@@ -12,4 +12,8 @@ public class Evaluacion extends Entity<EvaluacionId> {
         this.calificacion = calificacion;
     }
 
+    public void modificarCalificacion(Integer nuevacalificacion) {
+        this.calificacion = calificacion.modificarCalificacion(nuevacalificacion);
+    }
+
 }

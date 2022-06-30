@@ -4,11 +4,11 @@ import co.com.sofka.domain.generic.ValueObject;
 
 import java.util.Objects;
 
-public class Notas implements ValueObject<Notas.Props> {
+public class Nota implements ValueObject<Nota.Props> {
     private final String tema;
     private final Integer valor;
 
-    public Notas(String tema, Integer valor) {
+    public Nota(String tema, Integer valor) {
         this.tema = Objects.requireNonNull(tema);
         this.valor = Objects.requireNonNull(valor);
 
@@ -35,5 +35,9 @@ public class Notas implements ValueObject<Notas.Props> {
     public interface Props {
         String tema();
         Integer valor();
+    }
+
+    public Nota modificarValorNota(Integer valorNotaNuevo) {
+        return new Nota(this.tema, valorNotaNuevo);
     }
 }

@@ -14,11 +14,11 @@ public class CategoriaLicenciaCambiada extends DomainEvent {
         this.categoria = categoria;
     }
 
-    public MatriculaId getMatriculaId() {
+    public MatriculaId matriculaId() {
         return matriculaId;
     }
 
-    public String getCategoria() {
+    public String categoria() {
         return categoria;
     }
 }

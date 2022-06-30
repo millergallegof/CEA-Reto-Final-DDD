@@ -13,28 +13,14 @@ public class Estudiante extends AggregateEvent<EstudianteId> {
     protected Cuenta cuenta;
     protected Libreta libreta;
 
-    //    crear el cliente y cambiar los estados
     public Estudiante(
             EstudianteId estudianteId, MatriculaId matriculaId, ValorMatricula valorMatricula, TipoMatricula tipoMatricula,
             CuentaId cuentaId, TipoCuenta tipoCuenta, DatosUsuario datosUsuario,
             LibretaId libretaId, Datos datos) {
         super(estudianteId);
-        appendChange(new EstudianteCreado(matriculaId, valorMatricula, tipoMatricula, cuentaId, tipoCuenta, datosUsuario, libretaId, datos)).apply();
+        appendChange(new EstudianteCreado(cuentaId, tipoCuenta, datosUsuario, libretaId, datos)).apply();
+        appendChange(new MatriculaCreada(matriculaId, valorMatricula, tipoMatricula)).apply();
         subscribe(new EstudiantEventChange(this));
-    }
-
-    //    Cambiar el estado del estudiante segun los eventos creados
-    private Estudiante(EstudianteId id) {
-        super(id);
-        subscribe(new EstudiantEventChange(this));
-    }
-
-    public void agregarMatricula(Matricula matricula) {
-        appendChange(new MatriculaAgregada(matricula)).apply();
-    }
-
-    public void crearMatricula(EstudianteId estudianteId, MatriculaId matriculaId, ValorMatricula valorMatricula, TipoMatricula tipoMatricula) {
-        appendChange((new MatriculaCreada(estudianteId, matriculaId, valorMatricula, tipoMatricula))).apply();
     }
 
     public void cambiarCategoriaLicencia(MatriculaId matriculaId, String categoria) {
@@ -45,9 +31,20 @@ public class Estudiante extends AggregateEvent<EstudianteId> {
         appendChange(new DatosUsuActualizado(cuentaId, email, telefono)).apply();
     }
 
-    //    recrear el cliente que ya se creo - Reconstruir Agregado ya creado
+    public void agregarNota(LibretaId libretaId, Nota nota) {
+        appendChange(new NotaAgregada(libretaId, nota)).apply();
+    }
+
+    public void modificarValorNotaLibreta(LibretaId libretaId, Integer valorNotaNueva) {
+        appendChange(new ValorNotaLibretaModificada(libretaId, valorNotaNueva)).apply();
+    }
+
+    private Estudiante(EstudianteId id) {
+        super(id);
+        subscribe(new EstudiantEventChange(this));
+    }
+
     public static Estudiante from(EstudianteId id, List<DomainEvent> events) {
-//        es un cliente base para hacerle todos evetos
         var estudiante = new Estudiante(id);
         events.forEach(estudiante::applyEvent);
         return estudiante;

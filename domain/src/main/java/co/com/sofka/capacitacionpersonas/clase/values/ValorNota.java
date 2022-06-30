@@ -31,4 +31,8 @@ public class ValorNota implements ValueObject<ValorNota.Props> {
         String tema();
         Integer valor();
     }
+
+    public ValorNota cambiarValorNota(Integer valorNuevo) {
+        return new ValorNota(this.tema, valorNuevo);
+    }
 }

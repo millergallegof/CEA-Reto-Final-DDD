@@ -15,9 +15,12 @@ public class Calificacion implements ValueObject<Integer> {
             throw new IllegalArgumentException("el valor de la calificacion debe ser mayor a 0");
         }
     }
-
     @Override
     public Integer value() {
         return valor;
+    }
+
+    public Calificacion modificarCalificacion(Integer calificacionACambiar) {
+        return new Calificacion(calificacionACambiar);
     }
 }

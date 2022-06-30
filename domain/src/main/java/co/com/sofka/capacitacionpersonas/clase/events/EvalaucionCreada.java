@@ -17,15 +17,15 @@ public class EvalaucionCreada extends DomainEvent {
         this.calificacion = calificacion;
     }
 
-    public ClaseId getClaseId() {
+    public ClaseId claseId() {
         return claseId;
     }
 
-    public EvaluacionId getEvaluacionId() {
+    public EvaluacionId evaluacionId() {
         return evaluacionId;
     }
 
-    public Calificacion getCalificacion() {
+    public Calificacion calificacion() {
         return calificacion;
     }
 }

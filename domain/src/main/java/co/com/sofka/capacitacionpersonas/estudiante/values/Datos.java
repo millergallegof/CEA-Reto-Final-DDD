@@ -33,4 +33,8 @@ public class Datos implements ValueObject<Datos.Props> {
         String nombre();
         String telefono();
     }
+
+    public Datos modificarTelefono(String telefonoNuevo) {
+        return new Datos(this.nombre, telefonoNuevo);
+    }
 }

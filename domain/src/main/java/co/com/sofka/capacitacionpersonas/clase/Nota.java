@@ -17,4 +17,10 @@ public class Nota extends Entity<NotaId> {
         this.fechaNota = fechaNota;
         this.valor = valor;
     }
+
+    public void cambiarValorNota(Integer valorNuevo) {
+        this.valor = valor.cambiarValorNota(valorNuevo);
+    }
+
+
 }

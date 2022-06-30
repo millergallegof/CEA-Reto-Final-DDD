@@ -15,15 +15,15 @@ public class DatosUsuActualizado extends DomainEvent {
         this.telefono = telefono;
     }
 
-    public CuentaId getCuentaId() {
+    public CuentaId cuentaId() {
         return cuentaId;
     }
 
-    public String getEmail() {
+    public String email() {
         return email;
     }
 
-    public String getTelefono() {
+    public String telefono() {
         return telefono;
     }
 }
