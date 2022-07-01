@@ -1,8 +1,8 @@
 package co.com.sofka.capacitacionpersonas.clase.service;
 
-import co.com.sofka.capacitacionpersonas.clase.values.EstudianteId;
+import co.com.sofka.capacitacionpersonas.clase.values.ClaseId;
 
 public interface EmailService {
 
-    void enviarCorreo(EstudianteId claseId, String body);
+    void enviarCorreo(ClaseId claseId, String body);
 }

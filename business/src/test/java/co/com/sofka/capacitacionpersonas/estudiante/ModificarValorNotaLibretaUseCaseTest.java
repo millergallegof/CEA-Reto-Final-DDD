@@ -4,9 +4,11 @@ package co.com.sofka.capacitacionpersonas.estudiante;
 import co.com.sofka.business.generic.UseCaseHandler;
 import co.com.sofka.business.repository.DomainEventRepository;
 import co.com.sofka.business.support.RequestCommand;
+import co.com.sofka.capacitacionpersonas.clase.values.ClaseId;
 import co.com.sofka.capacitacionpersonas.estudiante.commands.ModificarValorNotaLibretaCommand;
 import co.com.sofka.capacitacionpersonas.estudiante.events.*;
 import co.com.sofka.capacitacionpersonas.estudiante.values.*;
+import co.com.sofka.capacitacionpersonas.instructor.values.InstructorId;
 import co.com.sofka.domain.generic.DomainEvent;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -49,7 +51,8 @@ class ModificarValorNotaLibretaUseCaseTest {
     }
 
     private List<DomainEvent> history() {
-
+        ClaseId claseId = ClaseId.of("Cl1234");
+        InstructorId instructorId = InstructorId.of("I1234");
         TipoCuenta tipoCuenta = new TipoCuenta("Estudiante");
         CuentaId cuentaId = CuentaId.of("C1234");
         DatosUsuario datosUsuario = new DatosUsuario("esteban@gmail.com", "12345");
@@ -57,7 +60,7 @@ class ModificarValorNotaLibretaUseCaseTest {
         Datos datos = new Datos("Miller", "310");
         Nota nota = new Nota("Frenos", 50);
         return List.of(
-                new EstudianteCreado(cuentaId, tipoCuenta, datosUsuario),
+                new EstudianteCreado(claseId, instructorId, cuentaId, tipoCuenta, datosUsuario),
                 new LibretaCreada(libretaId, datos),
                 new NotaAgregada(libretaId, nota)
         );

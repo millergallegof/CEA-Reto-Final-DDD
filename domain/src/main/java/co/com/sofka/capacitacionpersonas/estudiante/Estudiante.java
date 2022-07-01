@@ -1,25 +1,28 @@
 package co.com.sofka.capacitacionpersonas.estudiante;
 
-import co.com.sofka.capacitacionpersonas.clase.values.EstudianteId;
+import co.com.sofka.capacitacionpersonas.clase.values.ClaseId;
 import co.com.sofka.capacitacionpersonas.estudiante.events.*;
 import co.com.sofka.capacitacionpersonas.estudiante.values.*;
+import co.com.sofka.capacitacionpersonas.instructor.values.InstructorId;
 import co.com.sofka.domain.generic.AggregateEvent;
 import co.com.sofka.domain.generic.DomainEvent;
 
 import java.util.List;
 
-public class Estudiante extends AggregateEvent<co.com.sofka.capacitacionpersonas.estudiante.values.EstudianteId> {
+public class Estudiante extends AggregateEvent<EstudianteId> {
 
+    protected ClaseId claseId;
+    protected InstructorId instructorId;
     protected Matricula matricula;
     protected Cuenta cuenta;
     protected Libreta libreta;
 
     public Estudiante(
-            co.com.sofka.capacitacionpersonas.estudiante.values.EstudianteId estudianteId, MatriculaId matriculaId, ValorMatricula valorMatricula, TipoMatricula tipoMatricula,
+            EstudianteId estudianteId, ClaseId claseId, InstructorId instructorId, MatriculaId matriculaId, ValorMatricula valorMatricula, TipoMatricula tipoMatricula,
             CuentaId cuentaId, TipoCuenta tipoCuenta, DatosUsuario datosUsuario,
             LibretaId libretaId, Datos datos) {
         super(estudianteId);
-        appendChange(new EstudianteCreado(cuentaId, tipoCuenta, datosUsuario)).apply();
+        appendChange(new EstudianteCreado(claseId, instructorId, cuentaId, tipoCuenta, datosUsuario)).apply();
         appendChange(new MatriculaCreada(matriculaId, valorMatricula, tipoMatricula)).apply();
         appendChange(new LibretaCreada(libretaId, datos)).apply();
         subscribe(new EstudiantEventChange(this));
@@ -29,7 +32,7 @@ public class Estudiante extends AggregateEvent<co.com.sofka.capacitacionpersonas
         appendChange(new CategoriaLicenciaCambiada(matriculaId, categoria)).apply();
     }
 
-    public void actualizarDatosusuario(EstudianteId claseId, CuentaId cuentaId, String email, String telefono) {
+    public void actualizarDatosusuario(EstudianteId estudianteId, CuentaId cuentaId, String email, String telefono) {
         appendChange(new DatosUsuActualizado(claseId, cuentaId, email, telefono)).apply();
     }
 
@@ -46,8 +49,8 @@ public class Estudiante extends AggregateEvent<co.com.sofka.capacitacionpersonas
         subscribe(new EstudiantEventChange(this));
     }
 
-    public static Estudiante from(co.com.sofka.capacitacionpersonas.estudiante.values.EstudianteId id, List<DomainEvent> events) {
-        var estudiante = new Estudiante(id);
+    public static Estudiante from(EstudianteId estudianteId, List<DomainEvent> events) {
+        var estudiante = new Estudiante(estudianteId);
         events.forEach(estudiante::applyEvent);
         return estudiante;
     }

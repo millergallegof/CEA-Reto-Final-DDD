@@ -5,7 +5,7 @@ import co.com.sofka.business.generic.UseCaseHandler;
 import co.com.sofka.business.support.TriggeredEvent;
 import co.com.sofka.capacitacionpersonas.clase.events.ValorNotaActualizado;
 import co.com.sofka.capacitacionpersonas.clase.service.EmailService;
-import co.com.sofka.capacitacionpersonas.clase.values.EstudianteId;
+import co.com.sofka.capacitacionpersonas.clase.values.ClaseId;
 import co.com.sofka.capacitacionpersonas.clase.values.NotaId;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -30,7 +30,7 @@ class NotificarCambioNotauseCaseTest {
         // creacion del evento
         NotaId notaId = NotaId.of("N1234");
         Integer valorNuevo = 40;
-        EstudianteId claseId = EstudianteId.of("C1234");
+        ClaseId claseId = ClaseId.of("C1234");
         var event = new ValorNotaActualizado(claseId, notaId, valorNuevo);
 
 //        SE MOQUEA EL SERVICIO - utilizando el when para inyectar el usecase-servicio

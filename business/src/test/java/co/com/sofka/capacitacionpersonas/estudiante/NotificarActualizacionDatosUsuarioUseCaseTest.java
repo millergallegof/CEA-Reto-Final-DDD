@@ -3,7 +3,7 @@ package co.com.sofka.capacitacionpersonas.estudiante;
 import co.com.sofka.business.generic.ServiceBuilder;
 import co.com.sofka.business.generic.UseCaseHandler;
 import co.com.sofka.business.support.TriggeredEvent;
-import co.com.sofka.capacitacionpersonas.clase.values.EstudianteId;
+import co.com.sofka.capacitacionpersonas.clase.values.ClaseId;
 import co.com.sofka.capacitacionpersonas.estudiante.events.DatosUsuActualizado;
 import co.com.sofka.capacitacionpersonas.estudiante.service.EmailCambioCategoriaLicenciaService;
 import co.com.sofka.capacitacionpersonas.estudiante.values.CuentaId;
@@ -27,7 +27,7 @@ class NotificarActualizacionDatosUsuarioUseCaseTest {
     @Test
     void notificarActualizacionDatosusuario() {
 
-        EstudianteId estudianteId = EstudianteId.of("C1234");
+        ClaseId estudianteId = ClaseId.of("C1234");
         CuentaId cuentaId = CuentaId.of("Cu1234");
         String email = "miller.gallegof@gmail.com";
         String telefono = "3107961838";

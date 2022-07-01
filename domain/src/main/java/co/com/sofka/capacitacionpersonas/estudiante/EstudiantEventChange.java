@@ -9,6 +9,8 @@ public class EstudiantEventChange extends EventChange {
 
 //        es como un constructor de agregados
         apply((EstudianteCreado event) -> {
+            estudiante.claseId = event.claseId();
+            estudiante.instructorId = event.instructorId();
             estudiante.cuenta = new Cuenta(event.cuentaId(), event.datosUsuario());
         });
 

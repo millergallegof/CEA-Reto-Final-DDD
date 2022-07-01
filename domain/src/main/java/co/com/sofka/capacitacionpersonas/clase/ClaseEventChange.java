@@ -8,6 +8,7 @@ import java.util.HashMap;
 public class ClaseEventChange extends EventChange {
     public ClaseEventChange(Clase clase) {
         apply((ClaseCreada event) -> {
+            clase.instructorId = event.instructorId();
             clase.evaluacion = new Evaluacion(event.evaluacionId(), event.calificacion());
             clase.notas = new HashMap<>();
         });

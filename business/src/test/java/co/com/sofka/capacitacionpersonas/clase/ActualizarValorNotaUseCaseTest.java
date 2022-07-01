@@ -9,6 +9,7 @@ import co.com.sofka.capacitacionpersonas.clase.events.ClaseCreada;
 import co.com.sofka.capacitacionpersonas.clase.events.NotaAsociada;
 import co.com.sofka.capacitacionpersonas.clase.events.ValorNotaActualizado;
 import co.com.sofka.capacitacionpersonas.clase.values.*;
+import co.com.sofka.capacitacionpersonas.instructor.values.InstructorId;
 import co.com.sofka.domain.generic.DomainEvent;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -33,7 +34,7 @@ class ActualizarValorNotaUseCaseTest {
     @Test
     void actualizarValorNota() {
         //arrange
-        EstudianteId claseId = EstudianteId.of("C1234");
+        ClaseId claseId = ClaseId.of("C1234");
         NotaId notaId = NotaId.of("N1234");
         Integer valorNuevo = 35;
         var command = new ActualizarNotaValorCommand(claseId, notaId, valorNuevo);
@@ -54,6 +55,7 @@ class ActualizarValorNotaUseCaseTest {
     }
 
     private List<DomainEvent> history() {
+        InstructorId instructorId = InstructorId.of("I1234");
         NotaId notaId = NotaId.of("N1234");
         EstudianteNota estudianteNota = new EstudianteNota("Miller");
         FechaNota fechaNota = new FechaNota(LocalDate.now());
@@ -61,7 +63,7 @@ class ActualizarValorNotaUseCaseTest {
         EvaluacionId evaluacionId = EvaluacionId.of("E1234");
         Calificacion calificacion = new Calificacion(100);
         return List.of(
-                new ClaseCreada(evaluacionId, calificacion),
+                new ClaseCreada(instructorId, evaluacionId, calificacion),
                 new NotaAsociada(notaId, estudianteNota, fechaNota, valorNota)
         );
 

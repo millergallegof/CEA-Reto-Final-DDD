@@ -6,6 +6,7 @@ import co.com.sofka.capacitacionpersonas.clase.commands.CrearClaseCommand;
 import co.com.sofka.capacitacionpersonas.clase.events.ClaseCreada;
 import co.com.sofka.capacitacionpersonas.clase.events.TemaCreado;
 import co.com.sofka.capacitacionpersonas.clase.values.*;
+import co.com.sofka.capacitacionpersonas.instructor.values.InstructorId;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -20,13 +21,14 @@ public class CrearClaseUseCaseTest {
     @Test
     void crearClase() {
         //arrage
-        EstudianteId claseId = EstudianteId.of("C1234");
+        ClaseId claseId = ClaseId.of("C1234");
+        InstructorId instructorId = InstructorId.of("I1234");
         TemaId temaId = TemaId.of("T1234");
         Nombre nombre = new Nombre("Frenos");
         Duracion duracion = new Duracion(5, "conduccion");
         EvaluacionId evaluacionId = EvaluacionId.of("E1234");
         Calificacion calificacion = new Calificacion(100);
-        var command = new CrearClaseCommand(claseId, temaId, nombre, duracion, evaluacionId, calificacion);
+        var command = new CrearClaseCommand(claseId, instructorId, temaId, nombre, duracion, evaluacionId, calificacion);
 
         //act
         var events = UseCaseHandler.getInstance()

@@ -1,18 +1,21 @@
 package co.com.sofka.capacitacionpersonas.clase.commands;
 
 import co.com.sofka.capacitacionpersonas.clase.values.*;
+import co.com.sofka.capacitacionpersonas.instructor.values.InstructorId;
 import co.com.sofka.domain.generic.Command;
 
 public class CrearClaseCommand extends Command {
-    private final EstudianteId entityId;
+    private final ClaseId entityId;
+    private final InstructorId instructorId;
     private final TemaId temaId;
     private final Nombre nombre;
     private final Duracion duracion;
     private final EvaluacionId evaluacionId;
     private final Calificacion calificacion;
 
-    public CrearClaseCommand(EstudianteId entityId, TemaId temaId, Nombre nombre, Duracion duracion, EvaluacionId evaluacionId, Calificacion calificacion) {
+    public CrearClaseCommand(ClaseId entityId, InstructorId instructorId, TemaId temaId, Nombre nombre, Duracion duracion, EvaluacionId evaluacionId, Calificacion calificacion) {
         this.entityId = entityId;
+        this.instructorId = instructorId;
         this.temaId = temaId;
         this.nombre = nombre;
         this.duracion = duracion;
@@ -20,8 +23,12 @@ public class CrearClaseCommand extends Command {
         this.calificacion = calificacion;
     }
 
-    public EstudianteId entityId() {
+    public ClaseId entityId() {
         return entityId;
+    }
+
+    public InstructorId instructorId() {
+        return instructorId;
     }
 
     public TemaId temaId() {

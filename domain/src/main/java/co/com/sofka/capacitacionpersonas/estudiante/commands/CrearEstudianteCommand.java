@@ -1,12 +1,16 @@
 package co.com.sofka.capacitacionpersonas.estudiante.commands;
 
 
+import co.com.sofka.capacitacionpersonas.clase.values.ClaseId;
 import co.com.sofka.capacitacionpersonas.estudiante.values.*;
+import co.com.sofka.capacitacionpersonas.instructor.values.InstructorId;
 import co.com.sofka.domain.generic.Command;
 
 
 public class CrearEstudianteCommand extends Command {
     private final EstudianteId estudianteId;
+    private final ClaseId claseId;
+    private final InstructorId instructorId;
     private final MatriculaId matriculaId;
     private final ValorMatricula valorMatricula;
     private final TipoMatricula tipoMatricula;
@@ -16,8 +20,13 @@ public class CrearEstudianteCommand extends Command {
     private final LibretaId libretaId;
     private final Datos datos;
 
-    public CrearEstudianteCommand(EstudianteId estudianteId, MatriculaId matriculaId, ValorMatricula valorMatricula, TipoMatricula tipoMatricula, CuentaId cuentaId, TipoCuenta tipoCuenta, DatosUsuario datosUsuario, LibretaId libretaId, Datos datos) {
+    public CrearEstudianteCommand(EstudianteId estudianteId, ClaseId claseId, InstructorId instructorId,
+                                  MatriculaId matriculaId, ValorMatricula valorMatricula, TipoMatricula tipoMatricula,
+                                  CuentaId cuentaId, TipoCuenta tipoCuenta, DatosUsuario datosUsuario,
+                                  LibretaId libretaId, Datos datos) {
         this.estudianteId = estudianteId;
+        this.claseId = claseId;
+        this.instructorId = instructorId;
         this.matriculaId = matriculaId;
         this.valorMatricula = valorMatricula;
         this.tipoMatricula = tipoMatricula;
@@ -30,6 +39,14 @@ public class CrearEstudianteCommand extends Command {
 
     public EstudianteId estudianteId() {
         return estudianteId;
+    }
+
+    public ClaseId claseId() {
+        return claseId;
+    }
+
+    public InstructorId instructorId() {
+        return instructorId;
     }
 
     public MatriculaId matriculaId() {

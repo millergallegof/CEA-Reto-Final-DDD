@@ -15,6 +15,8 @@ public class CrearEstudianteUseCase extends UseCase<RequestCommand<CrearEstudian
         var command = crearEstudianteCommandRequestCommand.getCommand();
         var estudiante = new Estudiante(
                 command.estudianteId(),
+                command.claseId(),
+                command.instructorId(),
                 command.matriculaId(),
                 command.valorMatricula(),
                 command.tipoMatricula(),

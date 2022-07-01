@@ -8,6 +8,7 @@ import co.com.sofka.capacitacionpersonas.clase.commands.ActualizarCalificacionCo
 import co.com.sofka.capacitacionpersonas.clase.events.CalificacionEvaluacionActualizado;
 import co.com.sofka.capacitacionpersonas.clase.events.ClaseCreada;
 import co.com.sofka.capacitacionpersonas.clase.values.*;
+import co.com.sofka.capacitacionpersonas.instructor.values.InstructorId;
 import co.com.sofka.domain.generic.DomainEvent;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -31,7 +32,7 @@ class ActualizarCalificacionUseCaseTest {
     @Test
     void actualizarCalificacion() {
         //arrange
-        EstudianteId claseId = EstudianteId.of("C1234");
+        ClaseId claseId = ClaseId.of("C1234");
         EvaluacionId evaluacionId = EvaluacionId.of("E1234");
         Integer nuevaCalificacion = 35;
         var command = new ActualizarCalificacionCommand(claseId, evaluacionId, nuevaCalificacion);
@@ -50,10 +51,11 @@ class ActualizarCalificacionUseCaseTest {
     }
 
     private List<DomainEvent> history() {
+        InstructorId instructorId = InstructorId.of("I1234");
         EvaluacionId evaluacionId = EvaluacionId.of("E1234");
         Calificacion calificacion = new Calificacion(100);
         return List.of(
-                new ClaseCreada(evaluacionId, calificacion)
+                new ClaseCreada(instructorId, evaluacionId, calificacion)
         );
     }
 }
