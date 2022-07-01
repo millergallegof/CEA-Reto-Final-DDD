@@ -2,7 +2,7 @@
 
 En el siguiente repositorio vamos a observar un proyecto con pautas DDD, donde encontramos un dominio el cual corresponde a la prestacion de servicios de enseñanza automovilistica, donde se modela especificamemte el contexto de la formacion academica tanto teorica como practica.
 ## Modelamiento del Dominio
-En el siguiente enlace encontramos el modelo tanto estrategico como tactico del dominio enfocado en el contexto del transporte: [[https://drive.google.com/file/d/1Brc6BlXwHvnjBLPFcPehtMisPcBHB4a4/view?usp=sharing](https://drive.google.com/file/d/1xr-n0Yv0zmb6lHQJte3andpSqmhOXkz6/view?usp=sharing)](https://drive.google.com/file/d/1xr-n0Yv0zmb6lHQJte3andpSqmhOXkz6/view?usp=sharing)
+En el siguiente enlace encontramos el modelo tanto estrategico como tactico del dominio enfocado en el contexto del transporte: https://drive.google.com/file/d/1xr-n0Yv0zmb6lHQJte3andpSqmhOXkz6/view?usp=sharing)](https://drive.google.com/file/d/1xr-n0Yv0zmb6lHQJte3andpSqmhOXkz6/view?usp=sharing
 *(preferiblemente abrir el archivo con la pagina draw.io)*
 
 ### Pasos para ver el modelo de dominio
