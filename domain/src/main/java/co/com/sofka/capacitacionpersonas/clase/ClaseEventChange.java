@@ -40,7 +40,7 @@ public class ClaseEventChange extends EventChange {
             if (clase.notas.size() == 0) {
                 throw new IllegalArgumentException("No existen notas en la lista");
             }
-            if (clase.notas.containsKey(event.notaId())) {
+            if (!clase.notas.containsKey(event.notaId())) {
                 throw new IllegalArgumentException("la nota que desea modificar no existe");
             }
             clase.notas.get(event.notaId()).cambiarValorNota(event.valorNuevo());

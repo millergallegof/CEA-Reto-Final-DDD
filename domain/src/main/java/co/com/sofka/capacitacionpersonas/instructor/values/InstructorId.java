@@ -18,4 +18,13 @@ public class InstructorId extends Identity {
         PASAPORTE, CC, TI
     }
 
+    public static InstructorId of(Type type, String value) {
+        return new InstructorId(type, value);
+    }
+
+    public static InstructorId of(String id) {
+        return new InstructorId(id);
+    }
+
+
 }

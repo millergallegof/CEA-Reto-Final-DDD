@@ -9,4 +9,8 @@ public class LibretaId extends Identity {
     }
     public LibretaId() {
     }
+
+    public static LibretaId of(String id) {
+        return new LibretaId(id);
+    }
 }

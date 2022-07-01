@@ -10,4 +10,8 @@ public class ClaseId extends Identity {
 
     public ClaseId() {
     }
+
+    public static ClaseId of(String value) {
+        return new ClaseId(value);
+    }
 }

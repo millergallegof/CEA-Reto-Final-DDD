@@ -9,4 +9,8 @@ public class EvaluacionId extends Identity {
 
     public EvaluacionId() {
     }
+
+    public static EvaluacionId of(String value) {
+        return new EvaluacionId(value);
+    }
 }

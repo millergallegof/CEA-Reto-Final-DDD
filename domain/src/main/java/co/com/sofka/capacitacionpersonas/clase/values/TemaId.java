@@ -9,4 +9,8 @@ public class TemaId extends Identity {
 
     public TemaId() {
     }
+
+    public static TemaId of(String value) {
+        return new TemaId(value);
+    }
 }

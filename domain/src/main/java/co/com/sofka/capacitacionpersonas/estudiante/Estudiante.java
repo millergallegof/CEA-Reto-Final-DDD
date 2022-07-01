@@ -18,8 +18,9 @@ public class Estudiante extends AggregateEvent<EstudianteId> {
             CuentaId cuentaId, TipoCuenta tipoCuenta, DatosUsuario datosUsuario,
             LibretaId libretaId, Datos datos) {
         super(estudianteId);
-        appendChange(new EstudianteCreado(cuentaId, tipoCuenta, datosUsuario, libretaId, datos)).apply();
+        appendChange(new EstudianteCreado(cuentaId, tipoCuenta, datosUsuario)).apply();
         appendChange(new MatriculaCreada(matriculaId, valorMatricula, tipoMatricula)).apply();
+        appendChange(new LibretaCreada(libretaId, datos)).apply();
         subscribe(new EstudiantEventChange(this));
     }
 

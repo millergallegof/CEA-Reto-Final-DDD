@@ -9,4 +9,8 @@ public class ContratoId extends Identity {
 
     public ContratoId() {
     }
+
+    public static ContratoId of(String value) {
+        return new ContratoId(value);
+    }
 }

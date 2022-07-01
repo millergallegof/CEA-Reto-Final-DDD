@@ -10,4 +10,8 @@ public class MatriculaId extends Identity {
 
     public MatriculaId() {
     }
+
+    public static MatriculaId of(String id) {
+        return new MatriculaId(id);
+    }
 }

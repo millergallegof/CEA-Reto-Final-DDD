@@ -8,4 +8,8 @@ public class CuentaId extends Identity {
     }
     public CuentaId() {
     }
+
+    public static CuentaId of(String id) {
+        return new CuentaId(id);
+    }
 }

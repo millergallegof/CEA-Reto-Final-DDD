@@ -30,8 +30,8 @@ public class Clase extends AggregateEvent<ClaseId> {
         appendChange(new CalificacionEvaluacionActualizado(evaluacionId, nuevaCalificacion)).apply();
     }
 
-    public void modificarValorNota(NotaId notaId, Integer valorNuevo) {
-        appendChange(new ValorNotaActualizado(notaId, valorNuevo)).apply();
+    public void modificarValorNota(ClaseId claseId,NotaId notaId, Integer valorNuevo) {
+        appendChange(new ValorNotaActualizado(claseId, notaId, valorNuevo)).apply();
     }
 
 

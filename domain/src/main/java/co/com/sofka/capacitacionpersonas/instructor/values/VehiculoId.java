@@ -9,4 +9,8 @@ public class VehiculoId extends Identity {
 
     public VehiculoId() {
     }
+
+    public static VehiculoId of(String value) {
+        return new VehiculoId(value);
+    }
 }

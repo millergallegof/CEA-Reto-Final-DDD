@@ -10,11 +10,14 @@ public class EstudiantEventChange extends EventChange {
 //        es como un constructor de agregados
         apply((EstudianteCreado event) -> {
             estudiante.cuenta = new Cuenta(event.cuentaId(), event.datosUsuario());
-            estudiante.libreta = new Libreta(event.libretaId(), event.datos());
         });
 
         apply((MatriculaCreada event) -> {
             estudiante.matricula = new Matricula(event.matriculaId(), event.valorMatricula(), event.tipoMatricula());
+        });
+
+        apply((LibretaCreada event) -> {
+            estudiante.libreta = new Libreta(event.libretaId(), event.datos());
         });
 
 //        Cambiar el estado de la categoria de licencia de la entity

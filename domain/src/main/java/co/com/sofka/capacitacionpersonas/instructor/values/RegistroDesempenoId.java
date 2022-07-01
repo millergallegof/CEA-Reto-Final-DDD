@@ -9,4 +9,9 @@ public class RegistroDesempenoId extends Identity {
 
     public RegistroDesempenoId() {
     }
+
+    public static RegistroDesempenoId of(String value) {
+        return new RegistroDesempenoId(value);
+    }
+
 }

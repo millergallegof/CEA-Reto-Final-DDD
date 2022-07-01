@@ -9,4 +9,8 @@ public class NotaId extends Identity {
 
     public NotaId() {
     }
+
+    public static NotaId of(String value) {
+        return new NotaId(value);
+    }
 }
