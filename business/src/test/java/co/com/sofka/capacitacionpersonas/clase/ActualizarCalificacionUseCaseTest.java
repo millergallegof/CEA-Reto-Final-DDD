@@ -31,7 +31,7 @@ class ActualizarCalificacionUseCaseTest {
     @Test
     void actualizarCalificacion() {
         //arrange
-        ClaseId claseId = ClaseId.of("C1234");
+        EstudianteId claseId = EstudianteId.of("C1234");
         EvaluacionId evaluacionId = EvaluacionId.of("E1234");
         Integer nuevaCalificacion = 35;
         var command = new ActualizarCalificacionCommand(claseId, evaluacionId, nuevaCalificacion);

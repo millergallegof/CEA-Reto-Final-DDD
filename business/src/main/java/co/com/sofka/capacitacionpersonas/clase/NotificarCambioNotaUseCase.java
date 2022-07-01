@@ -5,7 +5,6 @@ import co.com.sofka.business.support.ResponseEvents;
 import co.com.sofka.business.support.TriggeredEvent;
 import co.com.sofka.capacitacionpersonas.clase.events.ValorNotaActualizado;
 import co.com.sofka.capacitacionpersonas.clase.service.EmailService;
-import co.com.sofka.capacitacionpersonas.clase.values.ClaseId;
 
 import java.util.List;
 

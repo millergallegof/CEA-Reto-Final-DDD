@@ -33,7 +33,7 @@ class ActualizarValorNotaUseCaseTest {
     @Test
     void actualizarValorNota() {
         //arrange
-        ClaseId claseId = ClaseId.of("C1234");
+        EstudianteId claseId = EstudianteId.of("C1234");
         NotaId notaId = NotaId.of("N1234");
         Integer valorNuevo = 35;
         var command = new ActualizarNotaValorCommand(claseId, notaId, valorNuevo);

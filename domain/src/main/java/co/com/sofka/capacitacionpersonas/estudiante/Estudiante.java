@@ -1,5 +1,6 @@
 package co.com.sofka.capacitacionpersonas.estudiante;
 
+import co.com.sofka.capacitacionpersonas.clase.values.EstudianteId;
 import co.com.sofka.capacitacionpersonas.estudiante.events.*;
 import co.com.sofka.capacitacionpersonas.estudiante.values.*;
 import co.com.sofka.domain.generic.AggregateEvent;
@@ -7,14 +8,14 @@ import co.com.sofka.domain.generic.DomainEvent;
 
 import java.util.List;
 
-public class Estudiante extends AggregateEvent<EstudianteId> {
+public class Estudiante extends AggregateEvent<co.com.sofka.capacitacionpersonas.estudiante.values.EstudianteId> {
 
     protected Matricula matricula;
     protected Cuenta cuenta;
     protected Libreta libreta;
 
     public Estudiante(
-            EstudianteId estudianteId, MatriculaId matriculaId, ValorMatricula valorMatricula, TipoMatricula tipoMatricula,
+            co.com.sofka.capacitacionpersonas.estudiante.values.EstudianteId estudianteId, MatriculaId matriculaId, ValorMatricula valorMatricula, TipoMatricula tipoMatricula,
             CuentaId cuentaId, TipoCuenta tipoCuenta, DatosUsuario datosUsuario,
             LibretaId libretaId, Datos datos) {
         super(estudianteId);
@@ -28,8 +29,8 @@ public class Estudiante extends AggregateEvent<EstudianteId> {
         appendChange(new CategoriaLicenciaCambiada(matriculaId, categoria)).apply();
     }
 
-    public void actualizarDatosusuario(CuentaId cuentaId, String email, String telefono) {
-        appendChange(new DatosUsuActualizado(cuentaId, email, telefono)).apply();
+    public void actualizarDatosusuario(EstudianteId claseId, CuentaId cuentaId, String email, String telefono) {
+        appendChange(new DatosUsuActualizado(claseId, cuentaId, email, telefono)).apply();
     }
 
     public void agregarNota(LibretaId libretaId, Nota nota) {
@@ -40,12 +41,12 @@ public class Estudiante extends AggregateEvent<EstudianteId> {
         appendChange(new ValorNotaLibretaModificada(libretaId, valorNotaNueva)).apply();
     }
 
-    private Estudiante(EstudianteId id) {
+    private Estudiante(co.com.sofka.capacitacionpersonas.estudiante.values.EstudianteId id) {
         super(id);
         subscribe(new EstudiantEventChange(this));
     }
 
-    public static Estudiante from(EstudianteId id, List<DomainEvent> events) {
+    public static Estudiante from(co.com.sofka.capacitacionpersonas.estudiante.values.EstudianteId id, List<DomainEvent> events) {
         var estudiante = new Estudiante(id);
         events.forEach(estudiante::applyEvent);
         return estudiante;
